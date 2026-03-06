@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int solution(int angle) {
+    if (angle > 0 && angle < 90) return 1;     
+    if (angle == 90) return 2;                 
+    if (angle > 90 && angle < 180) return 3;   
+    if (angle == 180) return 4;                
+    return 0;                                  
+}
+
+int main() {
+    int a;
+    scanf("%d", &a);
+    printf("%d", solution(a));
+    return 0;
+}
