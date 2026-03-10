@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+// arr_len은 배열 arr의 길이입니다.
+double solution(int arr[], size_t arr_len) {
+    double answer = 0;
+    for (int k = 0; k<arr_len; k++)
+    {
+        answer += arr[k];
+    }
+    
+    return (double)answer/arr_len;
+}
+
+int main()
+{
+    int n = 8 , b = 0, ch;
+    char *a = malloc(n * sizeof(char)); 
+    
+    while ((ch = getchar()) != '\n' && ch != EOF)  //EOF == -1 end of file
+
+    {
+        if (b + 1  >= n) { //직전 확인
+            n *= 2;
+            a = realloc(a,n);   
+        }
+        a[b] = ch;
+        b++;
+        
+    }
+    a[b] = '\0';
+    
+    int len = strlen(a);
+    int arr[len],j = 0;
+    
+    for (int i=0; i<len; i++ )
+    {
+        if (isdigit(a[i])) // checking numbers
+        {
+            arr[j] = a[i] - '0'; // converting texts to numbs 
+            j++;
+        }
+    }
+    
+    if (j == 0) printf("0.000000");
+    else printf("%f",solution(arr,j));
+    free(a); // free heap memories
+    
+    return 0;
+}
