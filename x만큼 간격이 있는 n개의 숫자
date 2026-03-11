@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<long long> solution(int x, int n) {
+    vector<long long> answer;
+    answer.resize(n);
+    int sum=0;
+    for (int i = 0; i < n; i++) {
+        sum += x;
+        answer[i]  = sum;
+    }
+    return answer;
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+
+    vector<long long> result = solution(a,b);
+    for (long long v : result) {
+        cout << v;
+    }
+}
