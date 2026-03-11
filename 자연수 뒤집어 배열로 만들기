@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+
+int ToArray(long long number) 
+{
+    int result = 0;
+    if (number == 0) return 1;
+    while (number>0) {
+        number /= 10;
+        result++;
+    }
+    return result;
+}
+
+
+int* solution(long long n) {
+    int len = ToArray(n) ;
+    // 리턴할 값은 메모리를 동적 할당해주세요.
+    int* answer = (int*)malloc(len*sizeof(int));
+    for (int i = 0  ; i< len; i++)
+    {
+        answer[i] = (int)(n % 10);
+        n/=10;
+        
+    }
+    return answer;
+}
+
+int main()
+{
+    long long a;
+    scanf("%lld",&a);
+    solution(a);
+}
