@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int absolutes[], size_t abs_len, bool signs[], size_t signs_len) {
+    int answer = 0;
+    for (size_t i = 0; i < abs_len; i++)
+        answer += signs[i] ? absolutes[i] : -absolutes[i];
+    return answer;
+}
+
+int main() {
+    int *arr = NULL, x, s;
+    bool *arr2 = NULL;
+    size_t n = 0, m = 0;
+    char c;
+
+    while (scanf("%d%c", &x, &c) == 2) {
+        int *temp = realloc(arr, sizeof(int) * (n + 1));
+        arr = temp;
+        arr[n++] = x;
+        if (c == '\n') break;
+    }
+
+    while (scanf("%d%c", &s, &c) == 2) {
+        bool *temp = realloc(arr2, sizeof(bool) * (m + 1));
+        arr2 = temp;
+        arr2[m++] = s;
+        if (c == '\n') break;
+    }
+
+    printf("%d\n", solution(arr, n, arr2, m));
+
+    free(arr);
+    free(arr2);
+    return 0;
+}
